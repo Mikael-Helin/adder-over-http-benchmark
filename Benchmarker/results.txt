@@ -1,0 +1,101 @@
+# Running Benchmark
+
+The command to run the tests with 2 threads, 400 connections, 60 seconds
+
+wrk -t4 -c10000 -d60s -s wrk_benchmark.lua http://localhost:4000
+
+# Elixir Bandit
+
+Running 1m test @ http://localhost:4000
+  4 threads and 10000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    15.70ms   13.26ms 423.66ms   75.87%
+    Req/Sec    14.99k     2.92k   25.32k    67.22%
+  3579310 requests in 1.00m, 471.06MB read
+  Socket errors: connect 8983, read 0, write 0, timeout 0
+Requests/sec:  59552.49
+Transfer/sec:      7.84MB
+Total requests made: 0
+
+# Elixir Cowboy
+
+Running 1m test @ http://localhost:4000
+  4 threads and 10000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    25.11ms   36.77ms   2.00s    99.38%
+    Req/Sec    10.40k     1.46k   14.10k    60.60%
+  2482468 requests in 1.00m, 364.63MB read
+  Socket errors: connect 8983, read 0, write 0, timeout 34
+Requests/sec:  41326.04
+
+# Python FastAPI
+
+Running 1m test @ http://localhost:4000
+  4 threads and 10000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    66.58ms   27.86ms 365.24ms   84.28%
+    Req/Sec     3.83k     0.94k    5.93k    61.02%
+  914411 requests in 1.00m, 127.32MB read
+  Socket errors: connect 8983, read 0, write 0, timeout 0
+Requests/sec:  15222.99
+Transfer/sec:      2.12MB
+Total requests made: 0
+Transfer/sec:      6.07MB
+Total requests made: 0
+
+# NodeJS
+
+Node JS runs single thread
+
+Running 1m test @ http://localhost:4000
+  4 threads and 10000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   256.75ms   19.62ms 627.03ms   91.44%
+    Req/Sec     0.99k   282.61     1.95k    74.54%
+  236284 requests in 1.00m, 57.69MB read
+  Socket errors: connect 8983, read 0, write 0, timeout 0
+Requests/sec:   3931.78
+Transfer/sec:      0.96MB
+Total requests made: 0
+
+
+# C single thread
+
+Running 1m test @ http://localhost:4000
+  4 threads and 10000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    27.73ms    3.27ms 240.04ms   85.51%
+    Req/Sec     9.20k     1.64k   12.59k    62.48%
+  2196676 requests in 1.00m, 299.57MB read
+  Socket errors: connect 8983, read 0, write 0, timeout 0
+Requests/sec:  36553.08
+Transfer/sec:      4.98MB
+Total requests made: 0
+
+# C with 6 threads
+
+** [warn] Error from accept() call: Too many open files **
+
+Running 1m test @ http://localhost:4000
+  4 threads and 10000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     7.89ms    4.71ms  55.28ms   76.36%
+    Req/Sec    26.82k     4.59k   43.77k    67.50%
+  6392543 requests in 1.00m, 792.53MB read
+  Socket errors: connect 8983, read 0, write 0, timeout 0
+Requests/sec: 106369.90
+Transfer/sec:     13.19MB
+Total requests made: 0
+
+# Go
+
+Running 1m test @ http://localhost:4000
+  4 threads and 10000 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     9.54ms   10.31ms 140.16ms   88.36%
+    Req/Sec    21.47k     5.38k   40.44k    68.75%
+  5105947 requests in 1.00m, 676.85MB read
+  Socket errors: connect 8983, read 0, write 0, timeout 0
+Requests/sec:  84974.58
+Transfer/sec:     11.26MB
+Total requests made: 0

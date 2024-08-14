@@ -1,0 +1,3 @@
+gcc -O3 -o http_server http_server_singlecore.c -levent
+
+gcc -O3 -o http_server http_server_multicore.c -levent -levent_pthreads -lpthread
